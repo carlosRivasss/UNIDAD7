@@ -1,0 +1,211 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    z-index: 1000;
+    position: relative;
+    background-image: url('image/imagen.gif');
+    background-size: cover;
+    background-position: center left;
+    background-repeat: repeat;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+nav ul li {
+    position: relative;
+    margin-right: 20px;
+    z-index: 1000;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/*En esta parte esque es para que el menu se pueda ver las opciones y no se desborde*/
+nav ul li:hover .submenu, nav ul li:focus-within .submenu {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #333;
+    border-radius: 3px;
+    z-index: 2000;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.submenu {
+    display: none;
+    padding: 10px 0;
+    min-width: 160px; /* Ancho mínimo para los submenús */
+}
+
+.submenu li a {
+    padding: 10px;
+    display: block;
+    white-space: nowrap; /* Evita la ruptura de la línea en los elementos del submenu */
+}
+
+
+
+#buscador {
+    display: block; /* Cambiado a block para permitir centrado */
+    width: 100%; /* Toma el ancho completo del header */
+    text-align: center; /* Centra el buscador */
+    padding: 10px ; /* Espacio superior e inferior para separación visual */
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+}
+
+#buscador input[type="text"], #buscador button {
+    vertical-align: middle;
+}
+
+#buscador button {
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: none;
+  background-color: #5cb85c;
+  color: white;
+  cursor: pointer;}
+
+main {
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo para los divisores */
+.divider {
+
+    background-color: #ccc;
+    margin: 20px 0;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+/*En la parte section esta lo de los div la transition es para que vaya saliendo la informacion*/
+section {
+    margin: 20px;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.titulo-link {
+    color: white; /* Establece el color del texto en blanco */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.titulo-link:hover {
+    color: #4CAF50; /* Color del enlace cuando pasas el ratón por encima, puedes cambiarlo si lo deseas */
+}
+
+
+section.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#inicio.reveal {
+    transition: none;
+    transform: none;
+    opacity: 1;
+}
+
+.reveal {
+    display: flex; /* Usamos flexbox para alinear los elementos */
+    align-items: center; /* Alinea el texto e imagen verticalmente */
+    justify-content: space-between; /* Crea espacio entre el texto y la imagen */
+}
+
+.texto {
+    flex: 1;
+    padding-right: 20px;
+    font-size: 17px; /* Ajusta el tamaño según lo que necesites */
+    line-height: 1.6; /* Esto mejora la legibilidad añadiendo un poco de espacio entre las líneas */
+}
+
+
+.imagen {
+    flex: 0.5; /* La imagen ocupará menos espacio */
+}
+
+.imagen img {
+    max-width: 100%; /* La imagen no será más grande que su contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+
+/*el btn-active:hover es para que cuando pase el mause en el boton cambie el color*/
+.btn-active:hover {
+    background-color: #4CAF50; /* Cambia esto por el color que prefieras */
+    color: white; /* Cambia el color del texto, si es necesario */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    /* es para que permanezca fijo que siempre salga
+    position: fixed; */
+    width: 100%;
+    bottom: 0;
+}
+
+/* Remover el cambio a flex-direction: column en tamaños pequeños */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: row; /* Mantener el menú horizontal */
+        flex-wrap: wrap; /* Permitir que los elementos del menú se ajusten según el espacio disponible */
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin-right: 10px; /* Ajustar el margen para dispositivos móviles */
+    }
+
+    nav ul li a {
+        padding: 8px 10px; /* Reducir el padding para economizar espacio */
+    }
+
+    #buscador {
+        margin-top: 10px; /* Asegurarse de que el buscador no se superponga */
+    }
+
+    header {
+        padding: 10px 5px; /* Reducir el padding del encabezado en dispositivos móviles */
+    }
+}
+
+/* Media query para ajustar aún más en dispositivos muy pequeños */
+@media (max-width: 480px) {
+    nav ul li {
+        margin-right: 5px; /* Reducir aún más el margen */
+    }
+
+    nav ul li a {
+        font-size: 14px; /* Reducir el tamaño de la fuente para ahorrar espacio */
+    }
+}
